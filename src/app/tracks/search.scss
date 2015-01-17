@@ -1,0 +1,42 @@
+.search {
+
+}
+
+.search__input {
+
+}
+
+.search__input-btn {
+  background-color: #F50;
+}
+
+.search__results {
+  height: 200px;
+  margin-top: 15px;
+  text-align: left;
+  padding: 10px;
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style: none;
+      padding: 5px 0;
+
+      a {
+        color: #333;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .search__results__buttons {
+
+  }
+}
+
+
+
