@@ -4,8 +4,8 @@
 	angular.module('app', [
 		// angular modules
 		'ngAnimate',
-		'ngCookies',
-		'ngTouch',
+		// 'ngCookies',
+		// 'ngTouch',
 		'ngSanitize',
 
 		// app modules
