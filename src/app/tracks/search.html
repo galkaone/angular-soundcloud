@@ -1,23 +1,29 @@
 <div class="search">
   <form ng-submit="vm.getTracks()">
     <div class="input-group search__input">
-      <input type="text" class="form-control" placeholder="Search for..." ng-model="vm.search">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="::vm.search">
       <span class="input-group-btn">
         <button class="btn search__input-btn" type="submit">Go!</button>
       </span>
     </div>
   </form>
   <div class="search__results">
-    <ul>
+  <!-- tracks results -->
+    <ul class="list-unstyled"> <!-- list-inline -->
       <li ng-repeat="track in vm.tracks">
-        <a href="#" ng-click="vm.showTrack(track.id)">{{ track.title }}</a>
+        <a href="#" ng-click="vm.showTrack(track.id)">{{ ::track.title }}</a>
       </li>
     </ul>
-<!--     <ul>
-      <li ng-repeat="search in vm.searches track by $index">
-        <a href="#" ng-click="">{{ search }}</a>
-      </li>
-    </ul> -->
+
+    <!-- last searches -->
+    <div ng-if="!vm.isSearching">
+      <p class="text-primary">Last searches</p>
+      <ul class="list-unstyled">
+        <li ng-repeat="search in vm.searches track by $index">
+          <a href="#" ng-click="vm.showRecentSearch(search)">{{ search }}</a>
+        </li>
+      </ul>
+    </div>
 
   </div>
 

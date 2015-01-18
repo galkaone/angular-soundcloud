@@ -5,7 +5,7 @@
 		.module('app.tracks')
 		.factory('searchFactory', searchFactory);
 
-	function searchFactory (SC, localStorageService, $q) {
+	function searchFactory ($q, SC, localStorageService) {
 
 		var offsetTracks = 0,
 			numTracks = 6,
@@ -26,7 +26,7 @@
 			var deferred = $q.defer();
 
 			// fair enough for basic validation :)
-			if (typeof search === 'undefined') {
+			if (!search) {
 				deferred.reject({error: 'missing search key'});
 				return deferred.promise;
 			}
@@ -61,15 +61,23 @@
 		}
 
 		function getRecents () {
-			return searches;
+			return searches.slice().reverse();
 		}
 
 
 		function saveRecentSearches(key) {
-			// add logic to recent searches
+			var maxSaves = 5;
+			// if (searches.indexOf(key) === -1) {
+
 			searches.push(key);
-			// save
+
+			if(searches.length > maxSaves) {
+				searches.splice(0 , searches.length - maxSaves);
+			}
+
 			localStorageService.set('sc-searches', searches);
+
+			// }
 
 		}
 

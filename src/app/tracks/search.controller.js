@@ -11,28 +11,37 @@
 			vm.tracks = null;
 			vm.selectedTrack = null;
 			vm.searches = searchFactory.getRecents();
+			vm.isSearching = false;
 
 			vm.getTracks = getTracks;
 			vm.nextTracks = nextTracks;
 			vm.showTrack = showTrack;
+			vm.showRecentSearch = showRecentSearch;
 
 
 			function getTracks () {
 				searchFactory.getTracks(vm.search)
 					.then(function (tracks) {
 						vm.tracks = tracks;
+						vm.isSearching = true;
 					});
 			}
 
-			function nextTracks() {
+			function nextTracks () {
 				searchFactory.getNextTracks(vm.search)
 					.then(function (tracks) {
 						vm.tracks = tracks;
+						vm.isSearching = true;
 					});
 			}
 
 			function showTrack (trackId) {
 				$state.go('play', {trackId: trackId});
+			}
+
+			function showRecentSearch (key) {
+				vm.search = key;
+				getTracks();
 			}
 
 		}
