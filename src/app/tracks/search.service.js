@@ -44,7 +44,7 @@
 					saveRecentSearches(lastKeyword);
 
 					for(var i = 0; tracks.length > i; i++) {
-						tracks[i].artwork_url = tracks[i].artwork_url ? tracks[i].artwork_url.replace('large', 'small') : '';
+						tracks[i].artwork_url = tracks[i].artwork_url ? tracks[i].artwork_url.replace('large', 't67x67') : '';
 					}
 
 					deferred.resolve(tracks);

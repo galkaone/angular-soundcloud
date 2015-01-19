@@ -10,9 +10,11 @@
   <div class="search__results">
   <!-- tracks results -->
     <ul class="list-unstyled" ng-class="{'tiles': vm.showTiles}">
-      <li ng-repeat="track in vm.tracks">{{console.log(track)}}
-
-        <a href="#" ng-click="vm.showTrack(track.id)">{{ ::track.title }}</a>
+      <li ng-repeat="track in vm.tracks">
+        <a href="#" ng-click="vm.showTrack(track.id)">
+          <img ng-if="vm.showTiles" src="{{ ::track.artwork_url }}" alt="{{ ::track.title }}" />
+          {{ ::track.title }}
+        </a>
       </li>
     </ul>
 
