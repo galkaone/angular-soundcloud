@@ -1,0 +1,10 @@
+<div class="streamer">
+  <div class="album-art" ng-style="{'background-image': 'url('+vm.albumArt+')'}"></div>
+  <div class="wave" ng-style="{'background-image': 'url('+vm.wave+')'}"></div>
+  <div class="streamer__details">
+    <div class="track-info">
+      <h1>{{ ::vm.title }}</h1>
+    </div>
+    <a class="streamer__details-play glyphicon" ng-click="vm.play()" ng-class="{'glyphicon-play': !vm.playing, 'glyphicon-pause': vm.playing}"></a>
+  </div>
+</div>
