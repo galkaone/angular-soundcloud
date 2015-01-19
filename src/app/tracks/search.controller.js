@@ -10,13 +10,15 @@
 			vm.search = '';
 			vm.tracks = null;
 			vm.selectedTrack = null;
-			vm.searches = searchFactory.getRecents();
 			vm.isSearching = false;
+			vm.searches = searchFactory.getRecents();
+			vm.showTiles = searchFactory.getShowTiles();
 
 			vm.getTracks = getTracks;
 			vm.nextTracks = nextTracks;
 			vm.showTrack = showTrack;
 			vm.showRecentSearch = showRecentSearch;
+			vm.setShowTiles = setShowTiles;
 
 
 			function getTracks () {
@@ -42,6 +44,11 @@
 			function showRecentSearch (key) {
 				vm.search = key;
 				getTracks();
+			}
+
+			function setShowTiles (show) {
+				vm.showTiles = !!show;
+				searchFactory.setShowTiles(vm.showTiles);
 			}
 
 		}

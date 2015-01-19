@@ -57,16 +57,19 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- external service -->
     <script src="http://connect.soundcloud.com/sdk.js"></script>
+
+    <!-- build:js({.tmp,src}) scripts/app.js -->
     <!-- inject:js -->
+    <script src="components/gk-soundcloud/sc.service.js"></script>
     <script src="app/tracks/tracks.module.js"></script>
     <script src="app/tracks/tracks.config.js"></script>
     <script src="app/tracks/search.service.js"></script>
     <script src="app/tracks/search.controller.js"></script>
     <script src="app/tracks/play.controller.js"></script>
-    <script src="app/services/sc.service.js"></script>
-    <script src="app/components/sc-streamer.directive.js"></script>
+    <script src="app/streamer/streamer.module.js"></script>
+    <script src="app/streamer/sc-streamer.directive.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
     <!-- endinject -->

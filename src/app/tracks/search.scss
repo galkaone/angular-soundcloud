@@ -19,6 +19,12 @@
   ul {
     padding: 0;
 
+    &.tiles {
+      li {
+        display: inline-block;
+      }
+    }
+
     li {
       padding: 5px 0;
 

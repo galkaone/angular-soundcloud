@@ -9,18 +9,19 @@
   </form>
   <div class="search__results">
   <!-- tracks results -->
-    <ul class="list-unstyled"> <!-- list-inline -->
-      <li ng-repeat="track in vm.tracks">
+    <ul class="list-unstyled" ng-class="{'tiles': vm.showTiles}">
+      <li ng-repeat="track in vm.tracks">{{console.log(track)}}
+
         <a href="#" ng-click="vm.showTrack(track.id)">{{ ::track.title }}</a>
       </li>
     </ul>
 
     <!-- last searches -->
-    <div ng-if="!vm.isSearching">
+    <div class="text-center" ng-if="!vm.isSearching">
       <p class="text-primary">Last searches</p>
       <ul class="list-unstyled">
         <li ng-repeat="search in vm.searches track by $index">
-          <a href="#" ng-click="vm.showRecentSearch(search)">{{ search }}</a>
+          <a href="#" ng-click="vm.showRecentSearch(search)">{{ ::search }}</a>
         </li>
       </ul>
     </div>
@@ -33,10 +34,10 @@
     </button>
 
     <div class="btn-group" role="group" aria-label="...">
-      <button type="button" class="btn btn-default">
+      <button type="button" class="btn btn-default" ng-click="vm.setShowTiles(false)">
          <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
       </button>
-      <button type="button" class="btn btn-default">
+      <button type="button" class="btn btn-default" ng-click="vm.setShowTiles(true)">
          <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
       </button>
     </div>

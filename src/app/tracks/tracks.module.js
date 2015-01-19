@@ -2,8 +2,10 @@
     'use strict';
 
 	angular.module('app.tracks', [
-		'app.core',
-		'app.components'
+		// app
+		'app.streamer',
+		// components
+		'gk.soundcloud'
 	]);
 
 })();

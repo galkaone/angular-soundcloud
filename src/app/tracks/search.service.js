@@ -10,12 +10,15 @@
 		var offsetTracks = 0,
 			numTracks = 6,
 			lastKeyword = '',
+			showTiles = localStorageService.get('sc-searches-tiles') || false,
 			searches = localStorageService.get('sc-searches') || [];
 
 		var factory = {
 			getNextTracks: getNextTracks,
 			getTracks: getTracks,
-			getRecents: getRecents
+			getRecents: getRecents,
+			getShowTiles: getShowTiles,
+			setShowTiles: setShowTiles
 		};
 
 		return factory;
@@ -39,6 +42,10 @@
 					lastKeyword = search;
 
 					saveRecentSearches(lastKeyword);
+
+					for(var i = 0; tracks.length > i; i++) {
+						tracks[i].artwork_url = tracks[i].artwork_url ? tracks[i].artwork_url.replace('large', 'small') : '';
+					}
 
 					deferred.resolve(tracks);
 				},
@@ -65,7 +72,7 @@
 		}
 
 
-		function saveRecentSearches(key) {
+		function saveRecentSearches (key) {
 			var maxSaves = 5;
 			// if (searches.indexOf(key) === -1) {
 
@@ -80,6 +87,16 @@
 			// }
 
 		}
+
+		function getShowTiles () {
+			return showTiles;
+		}
+
+		function setShowTiles (display) {
+			showTiles = !!display;
+			localStorageService.set('sc-searches-tiles', showTiles);
+		}
+
 
 	}
 
